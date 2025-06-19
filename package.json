@@ -4,11 +4,12 @@
   "description": "Public Procurement Service OpenAPI Proxy Server",
   "main": "api/index.js",
   "scripts": {
-    "dev": "vercel dev",
+    "dev": "vercel dev --listen 3000",
     "deploy": "vercel --prod"
   },
   "dependencies": {
     "axios": "^1.6.2",
+    "dotenv": "^16.5.0",
     "xml2js": "^0.6.2"
   },
   "devDependencies": {

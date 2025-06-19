@@ -1,5 +1,4 @@
 const axios = require('axios');
-const xml2js = require('xml2js');
 
 module.exports = async (req, res) => {
   try {
@@ -21,40 +20,32 @@ module.exports = async (req, res) => {
       cntrctCnclsMtd,
       bidClseDt,
       opengDt,
-      prtcptLmtRgnCd,
-      prtcptLmtRgnNm,
-      indstrytyLmtYn,
-      bidNtceDtlUrl,
-      bidNtceUrl,
-      srvceDivNm,
+      bidPrtcptLmtRgnNm,
       sucsfbidMtd,
+      indstrytyLmtYn,
+      bidNtceUrl,
       rgstDt,
-      bfSpecRgstNo,
-      infoBizYn,
-      rsrvtnPrceRngRate,
-      rgnLmtBidLocplc,
-      rmrk,
-      bidPrtcptFeePaymntYn,
-      bidPrtcptFee,
-      bidGrntymnyPaymntYn,
-      crdtrNm,
-      dtilPrdctClsfcNoNm,
-      prdctSpecNm,
-      prcrmntReqNo,
       asignBdgtAmt,
       presmptPrce,
-      opengPlce,
       bidQlfctRgstDt,
       cmmnSpldmdMetd,
-      chgDt,
-      ntceKindNm,
-      ntceKindNm1,
-      ntceKindNm2,
+      prtcptLmtRgnCd,
+      rgnLmtBidLocplc,
+      bidGrntymnyPaymntYn,
+      bidNtceDtlUrl,
+      cnstwkDivNm,
+      chgNtceRsn,
+      rbidOpengDt,
       rbidPermsnYn,
-      BidPblancListInfoCnstwkBidPblancListInfoCnstwk,
-      BidPblancListInfoThngBidPblancListInfoThng,
-      BidPblancListInfoSrvcBidPblancListInfoSrvc,
-      BidPblancListInfoFrgnBidPblancListInfoFrgn
+      chgDt,
+      linkInsttNm,
+      dminsttTelNo,
+      dminsttFaxNo,
+      cnstwkOutlnInfo,
+      cnstwkPrdInfo,
+      presnatnOflclDt,
+      presnatnOflclNm,
+      rbidChrctrNtceNo
     } = req.query;
 
     // Service key from environment variable
@@ -87,43 +78,35 @@ module.exports = async (req, res) => {
     if (cntrctCnclsMtd) params.append('cntrctCnclsMtd', cntrctCnclsMtd);
     if (bidClseDt) params.append('bidClseDt', bidClseDt);
     if (opengDt) params.append('opengDt', opengDt);
-    if (prtcptLmtRgnCd) params.append('prtcptLmtRgnCd', prtcptLmtRgnCd);
-    if (prtcptLmtRgnNm) params.append('prtcptLmtRgnNm', prtcptLmtRgnNm);
-    if (indstrytyLmtYn) params.append('indstrytyLmtYn', indstrytyLmtYn);
-    if (bidNtceDtlUrl) params.append('bidNtceDtlUrl', bidNtceDtlUrl);
-    if (bidNtceUrl) params.append('bidNtceUrl', bidNtceUrl);
-    if (srvceDivNm) params.append('srvceDivNm', srvceDivNm);
+    if (bidPrtcptLmtRgnNm) params.append('bidPrtcptLmtRgnNm', bidPrtcptLmtRgnNm);
     if (sucsfbidMtd) params.append('sucsfbidMtd', sucsfbidMtd);
+    if (indstrytyLmtYn) params.append('indstrytyLmtYn', indstrytyLmtYn);
+    if (bidNtceUrl) params.append('bidNtceUrl', bidNtceUrl);
     if (rgstDt) params.append('rgstDt', rgstDt);
-    if (bfSpecRgstNo) params.append('bfSpecRgstNo', bfSpecRgstNo);
-    if (infoBizYn) params.append('infoBizYn', infoBizYn);
-    if (rsrvtnPrceRngRate) params.append('rsrvtnPrceRngRate', rsrvtnPrceRngRate);
-    if (rgnLmtBidLocplc) params.append('rgnLmtBidLocplc', rgnLmtBidLocplc);
-    if (rmrk) params.append('rmrk', rmrk);
-    if (bidPrtcptFeePaymntYn) params.append('bidPrtcptFeePaymntYn', bidPrtcptFeePaymntYn);
-    if (bidPrtcptFee) params.append('bidPrtcptFee', bidPrtcptFee);
-    if (bidGrntymnyPaymntYn) params.append('bidGrntymnyPaymntYn', bidGrntymnyPaymntYn);
-    if (crdtrNm) params.append('crdtrNm', crdtrNm);
-    if (dtilPrdctClsfcNoNm) params.append('dtilPrdctClsfcNoNm', dtilPrdctClsfcNoNm);
-    if (prdctSpecNm) params.append('prdctSpecNm', prdctSpecNm);
-    if (prcrmntReqNo) params.append('prcrmntReqNo', prcrmntReqNo);
     if (asignBdgtAmt) params.append('asignBdgtAmt', asignBdgtAmt);
     if (presmptPrce) params.append('presmptPrce', presmptPrce);
-    if (opengPlce) params.append('opengPlce', opengPlce);
     if (bidQlfctRgstDt) params.append('bidQlfctRgstDt', bidQlfctRgstDt);
     if (cmmnSpldmdMetd) params.append('cmmnSpldmdMetd', cmmnSpldmdMetd);
-    if (chgDt) params.append('chgDt', chgDt);
-    if (ntceKindNm) params.append('ntceKindNm', ntceKindNm);
-    if (ntceKindNm1) params.append('ntceKindNm1', ntceKindNm1);
-    if (ntceKindNm2) params.append('ntceKindNm2', ntceKindNm2);
+    if (prtcptLmtRgnCd) params.append('prtcptLmtRgnCd', prtcptLmtRgnCd);
+    if (rgnLmtBidLocplc) params.append('rgnLmtBidLocplc', rgnLmtBidLocplc);
+    if (bidGrntymnyPaymntYn) params.append('bidGrntymnyPaymntYn', bidGrntymnyPaymntYn);
+    if (bidNtceDtlUrl) params.append('bidNtceDtlUrl', bidNtceDtlUrl);
+    if (cnstwkDivNm) params.append('cnstwkDivNm', cnstwkDivNm);
+    if (chgNtceRsn) params.append('chgNtceRsn', chgNtceRsn);
+    if (rbidOpengDt) params.append('rbidOpengDt', rbidOpengDt);
     if (rbidPermsnYn) params.append('rbidPermsnYn', rbidPermsnYn);
-    if (BidPblancListInfoCnstwkBidPblancListInfoCnstwk) params.append('BidPblancListInfoCnstwkBidPblancListInfoCnstwk', BidPblancListInfoCnstwkBidPblancListInfoCnstwk);
-    if (BidPblancListInfoThngBidPblancListInfoThng) params.append('BidPblancListInfoThngBidPblancListInfoThng', BidPblancListInfoThngBidPblancListInfoThng);
-    if (BidPblancListInfoSrvcBidPblancListInfoSrvc) params.append('BidPblancListInfoSrvcBidPblancListInfoSrvc', BidPblancListInfoSrvcBidPblancListInfoSrvc);
-    if (BidPblancListInfoFrgnBidPblancListInfoFrgn) params.append('BidPblancListInfoFrgnBidPblancListInfoFrgn', BidPblancListInfoFrgnBidPblancListInfoFrgn);
+    if (chgDt) params.append('chgDt', chgDt);
+    if (linkInsttNm) params.append('linkInsttNm', linkInsttNm);
+    if (dminsttTelNo) params.append('dminsttTelNo', dminsttTelNo);
+    if (dminsttFaxNo) params.append('dminsttFaxNo', dminsttFaxNo);
+    if (cnstwkOutlnInfo) params.append('cnstwkOutlnInfo', cnstwkOutlnInfo);
+    if (cnstwkPrdInfo) params.append('cnstwkPrdInfo', cnstwkPrdInfo);
+    if (presnatnOflclDt) params.append('presnatnOflclDt', presnatnOflclDt);
+    if (presnatnOflclNm) params.append('presnatnOflclNm', presnatnOflclNm);
+    if (rbidChrctrNtceNo) params.append('rbidChrctrNtceNo', rbidChrctrNtceNo);
 
-    // API URL - 용역 입찰공고목록
-    const apiUrl = `${process.env.API_BASE_URL}/getBidPblancListInfoServc?${params.toString()}`;
+    // API URL - 공사 입찰공고목록
+    const apiUrl = `${process.env.API_BASE_URL}/getBidPblancListInfoCnstwk?${params.toString()}`;
 
     // Make API request
     const response = await axios.get(apiUrl, {
@@ -147,20 +130,17 @@ module.exports = async (req, res) => {
     
     // Handle specific error cases
     if (error.response) {
-      // The request was made and the server responded with a status code
       res.status(error.response.status).json({
         error: 'API request failed',
         message: error.response.data || error.message,
         status: error.response.status
       });
     } else if (error.request) {
-      // The request was made but no response was received
       res.status(503).json({
         error: 'Service unavailable',
         message: 'Unable to reach the API server'
       });
     } else {
-      // Something happened in setting up the request
       res.status(500).json({
         error: 'Internal server error',
         message: error.message

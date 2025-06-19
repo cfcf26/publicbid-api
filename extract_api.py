@@ -49,7 +49,19 @@ for i, text in enumerate(parser.all_text):
     if any(k in lower_text for k in ['http', 'api', 'servicekey', 'url', 'request', 'response', 'xml', 'json', 'parameter', '서비스', '요청', '응답', '파라미터']):
         api_info.append(f"{i}: {text}")
 
-# Print first 50 API-related entries
-for info in api_info[:50]:
-    print(info)
-    print("-" * 80)
+# Save results to file
+with open('api_extract_output.txt', 'w', encoding='utf-8') as f:
+    f.write("=== API Documentation Extract ===\n\n")
+    
+    # Print first 100 API-related entries
+    for info in api_info[:100]:
+        f.write(info + "\n")
+        f.write("-" * 80 + "\n")
+    
+    # Also save all text for reference
+    f.write("\n\n=== ALL TEXT ===\n\n")
+    for i, text in enumerate(parser.all_text[:500]):
+        f.write(f"{i}: {text}\n")
+        
+print(f"Found {len(api_info)} API-related entries")
+print(f"Total text entries: {len(parser.all_text)}")
