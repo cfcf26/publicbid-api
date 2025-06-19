@@ -26,7 +26,7 @@ module.exports = async (req, res) => {
       indstrytyLmtYn
     } = req.query;
 
-    // Service key from environment variable
+    // Service key from environment variable (already encoded)
     const serviceKey = process.env.SERVICE_KEY ? process.env.SERVICE_KEY.trim() : null;
     if (!serviceKey) {
       return res.status(500).json({
@@ -34,9 +34,8 @@ module.exports = async (req, res) => {
       });
     }
 
-    // Build query parameters
+    // Build query parameters - serviceKey is already encoded, so we'll add it manually
     const params = new URLSearchParams({
-      serviceKey,
       numOfRows,
       pageNo,
       inqryDiv,
@@ -62,7 +61,7 @@ module.exports = async (req, res) => {
     if (indstrytyLmtYn) params.append('indstrytyLmtYn', indstrytyLmtYn);
 
     // API URL
-    const apiUrl = `${process.env.API_BASE_URL}/getBidPblancListInfoServcPPSSrch?${params.toString()}`;
+    const apiUrl = `${process.env.API_BASE_URL}/getBidPblancListInfoServcPPSSrch?serviceKey=${serviceKey}&${params.toString()}`;
 
     // Make API request
     const response = await axios.get(apiUrl, {
