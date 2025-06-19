@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
     } = req.query;
 
     // Service key from environment variable
-    const serviceKey = process.env.SERVICE_KEY;
+    const serviceKey = process.env.SERVICE_KEY ? process.env.SERVICE_KEY.trim() : null;
     if (!serviceKey) {
       return res.status(500).json({
         error: 'Service key not configured'

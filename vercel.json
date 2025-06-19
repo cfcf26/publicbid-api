@@ -1,4 +1,5 @@
 {
+  "name": "publicbid-api",
   "functions": {
     "api/*.js": {
       "maxDuration": 30
